@@ -2,7 +2,7 @@
   {
     "id": "heal-vanilla-30",
     "name": "ยารักษา — กลิ่นวานิลลาอ่อนๆ",
-    "mood": "romance",
+    "mood": "healing",
     "type": "spray",
     "size": "30ml",
     "price": 89,
@@ -12,7 +12,7 @@
   {
     "id": "heal-meadhoney-30",
     "name": "ยารักษา — กลิ่นมี้ดฮันนี",
-    "mood": "romance",
+    "mood": "healing",
     "type": "spray",
     "size": "30ml",
     "price": 89,
@@ -22,7 +22,7 @@
   {
     "id": "heal-vanilla-100",
     "name": "ยารักษา — กลิ่นวานิลลาอ่อนๆ",
-    "mood": "romance",
+    "mood": "healing",
     "type": "spray",
     "size": "100ml",
     "price": 199,
@@ -32,7 +32,7 @@
   {
     "id": "heal-meadhoney-100",
     "name": "ยารักษา — กลิ่นมี้ดฮันนี",
-    "mood": "romance",
+    "mood": "healing",
     "type": "spray",
     "size": "100ml",
     "price": 199,
@@ -42,7 +42,7 @@
   {
     "id": "power-yuzu-60",
     "name": "ยาชูกำลัง — กลิ่นส้มยูซุกระปรี้กระเปร่า",
-    "mood": "fresh",
+    "mood": "powerboost",
     "type": "spray",
     "size": "60ml",
     "price": 300,
@@ -52,7 +52,7 @@
   {
     "id": "power-mint-60",
     "name": "ยาชูกำลัง — กลิ่นมิ้นท์เย็นสดชื่น",
-    "mood": "fresh",
+    "mood": "powerboost",
     "type": "spray",
     "size": "60ml",
     "price": 300,
@@ -82,7 +82,7 @@
   {
     "id": "sleep-lavender",
     "name": "ยานอนหลับ — กลิ่นลาเวนเดอร์ผ่อนคลาย",
-    "mood": "relax",
+    "mood": "deepslumber",
     "type": "spray",
     "size": "100ml",
     "price": 999,
@@ -92,7 +92,7 @@
   {
     "id": "sleep-chamomile",
     "name": "ยานอนหลับ — กลิ่นคาโมมายล์อุ่นใจ",
-    "mood": "relax",
+    "mood": "deepslumber",
     "type": "spray",
     "size": "100ml",
     "price": 999,

@@ -25,11 +25,11 @@ function initProductPage() {
   if (!filterBar || !productList) return;
 
   const MOOD_LABEL = {
-    all:     'ทั้งหมด',
-    fresh:   'Fresh',
-    relax:   'Relax',
-    focus:   'Focus',
-    romance: 'Romance',
+    all:         'ทั้งหมด',
+    healing:     'Healing',
+    powerboost:  'Power Boost',
+    focus:       'Focus',
+    deepslumber: 'Deep Slumber',
   };
 
   let products  = [];
