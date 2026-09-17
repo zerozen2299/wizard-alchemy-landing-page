@@ -1,29 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+Thai:wght@300;400;500;600&family=Sarabun:wght@300;400;500&display=swap');
 
 /* ============================================================
-   wizard alchemy — theme
+   wizard alchemy — midnight royal theme
    ============================================================ */
 
 :root {
-  /* base */
-  --paper:        #FDFBF7;
-  --cream:        #F4EEE3;
-  --beige:        #E2D6C3;
-  --beige-deep:   #BFAE94;
-  --ink:          #2E2823;
-  --ink-soft:     #6B6156;
-  --ink-faint:    #9A9086;
+  /* base — dark navy */
+  --paper:        #0D1220;
+  --cream:        #111827;
+  --beige:        #1E2D45;
+  --beige-deep:   #2E4168;
 
-  /* accent */
-  --gold:         #A9834C;
-  --gold-light:   #C9A876;
-  --bronze:       #8A6A3E;
+  /* text */
+  --ink:          #E8EDF5;
+  --ink-soft:     #9BACC4;
+  --ink-faint:    #5C7299;
 
-  /* mood — ใช้เป็นจุดเล็กๆ เท่านั้น */
-  --mood-fresh:   #A8C9B8;
-  --mood-relax:   #B8AECD;
-  --mood-focus:   #A6B4C2;
-  --mood-romance: #DDB9AE;
+  /* accent — silver & pale gold */
+  --gold:         #C8B89A;
+  --gold-light:   #DDD0BC;
+  --bronze:       #A89880;
+
+  /* ornamental glow */
+  --glow:         rgba(180, 200, 255, 0.06);
+  --glow-strong:  rgba(180, 200, 255, 0.12);
+
+  /* mood dots */
+  --mood-healing:     #9DB8C8;
+  --mood-powerboost:  #8FC4A8;
+  --mood-focus:       #A0A8D0;
+  --mood-deepslumber: #B4A8CC;
 
   /* type */
   --display: 'Cormorant Garamond', 'Noto Serif Thai', Georgia, serif;
@@ -64,6 +70,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ลายอมเนลทัลพื้นหลัง — SVG inline เป็น data URI */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%23C8B89A' stroke-width='0.5'%3E%3Ccircle cx='60' cy='60' r='50'/%3E%3Ccircle cx='60' cy='60' r='38'/%3E%3Cpath d='M60 10 C80 30,80 90,60 110 C40 90,40 30,60 10Z'/%3E%3Cpath d='M10 60 C30 40,90 40,110 60 C90 80,30 80,10 60Z'/%3E%3Cpath d='M27 27 Q60 10 93 27 Q110 60 93 93 Q60 110 27 93 Q10 60 27 27Z'/%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3Cline x1='60' y1='10' x2='60' y2='22'/%3E%3Cline x1='60' y1='98' x2='60' y2='110'/%3E%3Cline x1='10' y1='60' x2='22' y2='60'/%3E%3Cline x1='98' y1='60' x2='110' y2='60'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+
+body > * { position: relative; z-index: 1; }
+
 img { max-width: 100%; display: block; }
 
 /* ---------- type ---------- */
@@ -84,7 +104,7 @@ h4 { font-size: var(--step-1); }
 
 p { margin: 0 0 1.4em; max-width: var(--measure); }
 
-a { color: var(--bronze); text-decoration: none; }
+a { color: var(--gold-light); text-decoration: none; }
 a:hover { color: var(--gold); }
 
 .lede {
@@ -118,7 +138,7 @@ a:hover { color: var(--gold); }
 .stack > * + * { margin-top: 1.5rem; }
 .divider { border: 0; border-top: var(--line); margin-block: var(--section); }
 
-/* หัวข้อส่วน: เส้นบรอนซ์สั้นๆ ใต้ชื่อ */
+/* หัวข้อส่วน */
 .section-head { margin-bottom: clamp(2.5rem, 6vw, 4rem); }
 .section-head h2 { margin-bottom: 0.5rem; }
 .section-head::after {
@@ -139,8 +159,8 @@ a:hover { color: var(--gold); }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(253, 251, 247, 0.92);
-  backdrop-filter: blur(8px);
+  background: rgba(13, 18, 32, 0.88);
+  backdrop-filter: blur(12px);
   border-bottom: var(--line);
 }
 
@@ -156,7 +176,7 @@ a:hover { color: var(--gold); }
   font-family: var(--display);
   font-size: 1.35rem;
   letter-spacing: 0.18em;
-  color: var(--ink);
+  color: var(--gold-light);
   text-transform: lowercase;
 }
 
@@ -201,7 +221,7 @@ a:hover { color: var(--gold); }
   letter-spacing: 0.08em;
   line-height: 1;
   padding: 1rem 2rem;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--beige-deep);
   border-radius: 0;
   background: transparent;
   color: var(--ink);
@@ -209,16 +229,16 @@ a:hover { color: var(--gold); }
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
-.btn:hover { background: var(--ink); color: var(--paper); }
+.btn:hover { background: var(--beige); color: var(--ink); border-color: var(--gold); }
 
-.btn--solid { background: var(--ink); color: var(--paper); }
-.btn--solid:hover { background: var(--bronze); border-color: var(--bronze); }
+.btn--solid { background: var(--beige); color: var(--ink); border-color: var(--gold); }
+.btn--solid:hover { background: var(--beige-deep); border-color: var(--gold-light); }
 
-.btn--ghost { border-color: var(--beige-deep); color: var(--ink-soft); }
-.btn--ghost:hover { background: transparent; border-color: var(--ink); color: var(--ink); }
+.btn--ghost { border-color: var(--beige); color: var(--ink-soft); }
+.btn--ghost:hover { border-color: var(--gold); color: var(--ink); }
 
 .btn--full { width: 100%; }
-.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
 /* ---------- filter / mood chips ---------- */
 
@@ -241,17 +261,18 @@ a:hover { color: var(--gold); }
   border-radius: 999px;
   padding: 0.5rem 1.1rem;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
-.chip:hover { border-color: var(--beige-deep); color: var(--ink); }
+.chip:hover { border-color: var(--gold); color: var(--ink); background: var(--glow); }
 .chip[aria-pressed="true"],
 .chip.is-active {
   border-color: var(--gold);
-  color: var(--ink);
+  color: var(--gold-light);
+  background: var(--glow);
 }
 
-/* จุดสี mood — เล็กมาก ใช้เป็นสัญลักษณ์เท่านั้น */
+/* จุดสี mood */
 .dot {
   width: 7px;
   height: 7px;
@@ -260,10 +281,10 @@ a:hover { color: var(--gold); }
   flex: none;
 }
 
-.mood-fresh   .dot, .dot--fresh   { background: var(--mood-fresh); }
-.mood-relax   .dot, .dot--relax   { background: var(--mood-relax); }
-.mood-focus   .dot, .dot--focus   { background: var(--mood-focus); }
-.mood-romance .dot, .dot--romance { background: var(--mood-romance); }
+.mood-healing    .dot, .dot--healing    { background: var(--mood-healing); }
+.mood-powerboost .dot, .dot--powerboost { background: var(--mood-powerboost); }
+.mood-focus      .dot, .dot--focus      { background: var(--mood-focus); }
+.mood-deepslumber .dot, .dot--deepslumber { background: var(--mood-deepslumber); }
 
 /* ---------- product grid ---------- */
 
@@ -287,6 +308,7 @@ a:hover { color: var(--gold); }
   background: var(--cream);
   overflow: hidden;
   margin-bottom: 1.35rem;
+  border: var(--line);
 }
 
 .card__media img {
@@ -313,6 +335,7 @@ a:hover { color: var(--gold); }
   font-size: var(--step-1);
   line-height: 1.35;
   margin: 0 0 0.35rem;
+  color: var(--ink);
 }
 
 .card__desc {
@@ -338,7 +361,7 @@ a:hover { color: var(--gold); }
 .card__price {
   font-family: var(--display);
   font-size: var(--step-1);
-  color: var(--ink);
+  color: var(--gold-light);
 }
 .card__price span { font-size: 0.7em; color: var(--ink-soft); margin-left: 0.25rem; }
 
@@ -420,7 +443,7 @@ a:hover { color: var(--gold); }
   color: var(--ink-soft);
 }
 
-.message--error { border-left-color: #A6564B; }
+.message--error { border-left-color: #8B4A4A; }
 
 .empty {
   text-align: center;
@@ -449,7 +472,7 @@ a:hover { color: var(--gold); }
 }
 
 .site-footer a { color: var(--ink-soft); }
-.site-footer a:hover { color: var(--bronze); }
+.site-footer a:hover { color: var(--gold-light); }
 
 /* ---------- accessibility ---------- */
 

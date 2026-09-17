@@ -24,8 +24,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 55% at 72% 30%, rgba(169,131,76,.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(184,174,205,.07) 0%, transparent 65%);
+        radial-gradient(ellipse 60% 55% at 72% 30%, rgba(80, 120, 200, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(100, 80, 180, 0.08) 0%, transparent 65%);
       pointer-events: none;
     }
 
@@ -100,12 +100,12 @@
       text-decoration: none;
       color: var(--ink);
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
       position: relative;
     }
 
     .mood-card:first-child { border-left: var(--line); }
-    .mood-card:hover { background: var(--cream); color: var(--ink); }
+    .mood-card:hover { background: var(--glow-strong); color: var(--ink); border-color: var(--gold); }
 
     .mood-card__pip {
       width: 9px;
@@ -115,10 +115,10 @@
       flex: none;
     }
 
-    .mood-card--fresh   .mood-card__pip { background: var(--mood-fresh); }
-    .mood-card--relax   .mood-card__pip { background: var(--mood-relax); }
-    .mood-card--focus   .mood-card__pip { background: var(--mood-focus); }
-    .mood-card--romance .mood-card__pip { background: var(--mood-romance); }
+    .mood-card--fresh      .mood-card__pip { background: var(--mood-healing); }
+    .mood-card--relax      .mood-card__pip { background: var(--mood-deepslumber); }
+    .mood-card--focus      .mood-card__pip { background: var(--mood-focus); }
+    .mood-card--romance    .mood-card__pip { background: var(--mood-healing); }
 
     .mood-card__name {
       font-family: var(--display);
@@ -146,12 +146,12 @@
       bottom: clamp(1.5rem, 3vw, 2.25rem);
       right: clamp(1.5rem, 2.5vw, 2rem);
       font-size: 1.1rem;
-      color: var(--beige-deep);
+      color: var(--ink-faint);
       transition: color 0.25s ease, transform 0.25s ease;
     }
 
     .mood-card:hover .mood-card__arrow {
-      color: var(--gold);
+      color: var(--gold-light);
       transform: translate(3px, -3px);
     }
 
@@ -173,7 +173,7 @@
       display: block;
       font-size: 0.75rem;
       letter-spacing: 0.2em;
-      color: var(--gold);
+      color: var(--gold-light);
       margin-bottom: 1.75rem;
     }
 
@@ -198,7 +198,7 @@
       gap: 2.5rem;
     }
 
-    .stat { border-left: 1px solid var(--beige-deep); padding-left: 1.5rem; }
+    .stat { border-left: 1px solid var(--gold); padding-left: 1.5rem; }
 
     .stat__num {
       font-family: var(--display);
