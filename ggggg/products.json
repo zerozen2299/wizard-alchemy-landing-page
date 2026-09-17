@@ -1,0 +1,102 @@
+[
+  {
+    "id": "heal-vanilla-30",
+    "name": "ยารักษา — กลิ่นวานิลลาอ่อนๆ",
+    "mood": "romance",
+    "type": "spray",
+    "size": "30ml",
+    "price": 89,
+    "image": "images/heal-vanilla-30.jpg",
+    "description": "ขวดจิ๋วพกพาง่าย พร้อมช่วยสมานแผลเล็กๆ ระหว่างวันให้หายไวในพริบตา"
+  },
+  {
+    "id": "heal-meadhoney-30",
+    "name": "ยารักษา — กลิ่นมี้ดฮันนี",
+    "mood": "romance",
+    "type": "spray",
+    "size": "30ml",
+    "price": 89,
+    "image": "images/heal-meadhoney-30.jpg",
+    "description": "ไอเทมแก้ขัดยามฉุกเฉิน ช่วยดูแลรอยขีดข่วนขนาดเล็กให้กลับมาเนียนใสทันใจ"
+  },
+  {
+    "id": "heal-vanilla-100",
+    "name": "ยารักษา — กลิ่นวานิลลาอ่อนๆ",
+    "mood": "romance",
+    "type": "spray",
+    "size": "100ml",
+    "price": 199,
+    "image": "images/heal-vanilla-100.jpg",
+    "description": "ขวดใหญ่สุดคุ้มประจำโต๊ะทำงาน พร้อมดูแลผิวและบาดแผลเล็กๆ ให้คุณอุ่นใจตลอดเดือน"
+  },
+  {
+    "id": "heal-meadhoney-100",
+    "name": "ยารักษา — กลิ่นมี้ดฮันนี",
+    "mood": "romance",
+    "type": "spray",
+    "size": "100ml",
+    "price": 199,
+    "image": "images/heal-meadhoney-100.jpg",
+    "description": "ไอเทมลับคู่ใจสายลุย ช่วยเยียวยารอยแผลและรอยถลอกให้จางหายอย่างอ่อนโยน"
+  },
+  {
+    "id": "power-yuzu-60",
+    "name": "ยาชูกำลัง — กลิ่นส้มยูซุกระปรี้กระเปร่า",
+    "mood": "fresh",
+    "type": "spray",
+    "size": "60ml",
+    "price": 300,
+    "image": "images/power-yuzu-60.jpg",
+    "description": "เติมความสดชื่นและพละกำลังดั่งช้างสาร ให้พร้อมลุยกิจกรรมหนักได้ทั้งวันแบบไม่หมดแรง"
+  },
+  {
+    "id": "power-mint-60",
+    "name": "ยาชูกำลัง — กลิ่นมิ้นท์เย็นสดชื่น",
+    "mood": "fresh",
+    "type": "spray",
+    "size": "60ml",
+    "price": 300,
+    "image": "images/power-mint-60.jpg",
+    "description": "ปลุกพลังสมองและร่างกายให้ตื่นตัวขั้นสุด พร้อมรับมือทุกความท้าทายในมหาลัย"
+  },
+  {
+    "id": "focus-whitetea",
+    "name": "ยาเสริมสมาธิ — กลิ่นชาขาวละมุน",
+    "mood": "focus",
+    "type": "spray",
+    "size": "100ml",
+    "price": 999,
+    "image": "images/focus-whitetea.jpg",
+    "description": "กลิ่นหอมสะอาดช่วยเคลียร์สมองให้ปลอดโปร่ง โฟกัสกับการอ่านหนังสือสอบได้ยาวนานขึ้น"
+  },
+  {
+    "id": "focus-pine",
+    "name": "ยาเสริมสมาธิ — กลิ่นไม้สนอบอุ่น",
+    "mood": "focus",
+    "type": "spray",
+    "size": "100ml",
+    "price": 999,
+    "image": "images/focus-pine.jpg",
+    "description": "สร้างบรรยากาศสงบและมีสมาธิขั้นสุด ตัดสินใจทำโปรเจกต์ยากๆ ได้อย่างไหลลื่นไม่มีสะดุด"
+  },
+  {
+    "id": "sleep-lavender",
+    "name": "ยานอนหลับ — กลิ่นลาเวนเดอร์ผ่อนคลาย",
+    "mood": "relax",
+    "type": "spray",
+    "size": "100ml",
+    "price": 999,
+    "image": "images/sleep-lavender.jpg",
+    "description": "กลิ่นหอมละมุนช่วยกล่อมให้คุณหลับสนิทตลอดคืน ตื่นมาพร้อมรับเช้าวันใหม่แบบสมองใสปิ๊ง"
+  },
+  {
+    "id": "sleep-chamomile",
+    "name": "ยานอนหลับ — กลิ่นคาโมมายล์อุ่นใจ",
+    "mood": "relax",
+    "type": "spray",
+    "size": "100ml",
+    "price": 999,
+    "image": "images/sleep-chamomile.jpg",
+    "description": "ปลดความเครียดก่อนนอน พาคุณดำดิ่งสู่นิทราลึก ตื่นมาร่างกายฟื้นตัวดีเยี่ยมแบบไม่มีมึนงง"
+  }
+]

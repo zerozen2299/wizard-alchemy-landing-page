@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สั่งซื้อ — wizard alchemy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: clamp(3rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .order-summary {
+      position: sticky;
+      top: calc(74px + 2.5rem);
+      border: var(--line-strong);
+      padding: clamp(1.75rem, 4vw, 2.75rem);
+    }
+
+    .order-summary__label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .order-summary__name {
+      font-family: var(--display);
+      font-size: var(--step-2);
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .order-summary__price {
+      font-family: var(--display);
+      font-size: var(--step-3);
+      font-weight: 300;
+      color: var(--ink);
+      border-top: var(--line);
+      padding-top: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .order-summary__price small {
+      font-size: 0.55em;
+      color: var(--ink-soft);
+      margin-left: 0.3rem;
+    }
+
+    .order-summary__note {
+      font-size: var(--step--1);
+      color: var(--ink-faint);
+      margin-top: 1rem;
+    }
+
+    .order-summary--empty .order-summary__name { color: var(--ink-faint); font-style: italic; }
+    .order-summary--empty .order-summary__price { display: none; }
+
+    @media (max-width: 800px) {
+      .order-layout {
+        grid-template-columns: 1fr;
+      }
+      .order-summary {
+        position: static;
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">wizard alchemy</a>
+      <nav class="nav" aria-label="เมนูหลัก">
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html">สินค้า</a>
+        <a href="order.html" aria-current="page">สั่งซื้อ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- page head -->
+      <div class="section-head" style="margin-bottom: clamp(2.5rem, 6vw, 4rem);">
+        <h1 style="font-size: var(--step-3); margin-bottom: 0.3rem;">สั่งซื้อ</h1>
+        <p class="lede" style="margin: 0;">กรอกข้อมูลด้านล่าง แล้วกดยืนยัน</p>
+      </div>
+
+      <div class="order-layout">
+
+        <!-- ===== form ===== -->
+        <div>
+          <form id="orderForm" novalidate>
+
+            <div class="field">
+              <label for="customerName">ชื่อลูกค้า <span style="color:var(--ink-faint)">*</span></label>
+              <input type="text" id="customerName" name="customerName"
+                     placeholder="ชื่อ-นามสกุล หรือชื่อเล่น" required autocomplete="name">
+            </div>
+
+            <div class="field">
+              <label for="contact">เบอร์โทร / Line ID <span style="color:var(--ink-faint)">*</span></label>
+              <input type="text" id="contact" name="contact"
+                     placeholder="0812345678 หรือ @lineid" required autocomplete="tel">
+            </div>
+
+            <div class="field">
+              <label for="items">รายการสินค้า <span style="color:var(--ink-faint)">*</span></label>
+              <input type="text" id="items" name="items"
+                     placeholder="ชื่อสินค้าและไซส์" required>
+            </div>
+
+            <div class="field">
+              <label for="total">จำนวนเงินรวม (฿) <span style="color:var(--ink-faint)">*</span></label>
+              <input type="number" id="total" name="total"
+                     placeholder="0" min="0" required>
+            </div>
+
+            <div class="field">
+              <label for="note">หมายเหตุ</label>
+              <textarea id="note" name="note"
+                        placeholder="ที่อยู่จัดส่ง, ข้อความพิเศษ หรือรายละเอียดเพิ่มเติม"></textarea>
+            </div>
+
+            <p class="form-note" style="margin-bottom: 2rem;">
+              * จำเป็นต้องกรอก — ทีมงานจะติดต่อกลับเพื่อยืนยันคำสั่งซื้อทาง Line
+            </p>
+
+            <button type="submit" class="btn btn--solid btn--full">ยืนยันสั่งซื้อ</button>
+
+          </form>
+        </div>
+
+        <!-- ===== summary panel ===== -->
+        <aside class="order-summary order-summary--empty" id="orderSummary" aria-label="สรุปรายการ">
+          <span class="order-summary__label">สรุปรายการ</span>
+          <div class="order-summary__name" id="summaryName">—</div>
+          <div class="order-summary__price" id="summaryPrice">
+            — <small>฿</small>
+          </div>
+          <p class="order-summary__note">
+            ราคาและรายการสินค้าถูกเติมอัตโนมัติจากหน้าสินค้า
+            หากต้องการแก้ไขให้พิมพ์ทับได้เลย
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="brand">wizard alchemy</span>
+      <span style="color: var(--ink-faint); font-size: var(--step--1);">
+        <a href="product.html">← กลับหน้าสินค้า</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    /* อัปเดต summary panel ตาม URL params และเมื่อผู้ใช้แก้ไขฟอร์ม */
+    (function () {
+      const summaryEl   = document.getElementById('orderSummary');
+      const nameEl      = document.getElementById('summaryName');
+      const priceEl     = document.getElementById('summaryPrice');
+      const itemsInput  = document.getElementById('items');
+      const totalInput  = document.getElementById('total');
+
+      function updateSummary() {
+        const name  = itemsInput.value.trim();
+        const price = totalInput.value.trim();
+        const hasData = name || price;
+
+        summaryEl.classList.toggle('order-summary--empty', !hasData);
+        nameEl.textContent  = name  || '—';
+        priceEl.innerHTML   = price
+          ? `${Number(price).toLocaleString()}<small> ฿</small>`
+          : '—';
+      }
+
+      itemsInput.addEventListener('input', updateSummary);
+      totalInput.addEventListener('input', updateSummary);
+
+      /* script.js เติมค่าก่อน DOMContentLoaded เสร็จ ดังนั้น poll สั้นๆ */
+      let tries = 0;
+      const poll = setInterval(() => {
+        if (itemsInput.value || totalInput.value || ++tries > 20) {
+          updateSummary();
+          clearInterval(poll);
+        }
+      }, 50);
+    })();
+  </script>
+</body>
+</html>

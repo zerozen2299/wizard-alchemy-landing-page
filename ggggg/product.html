@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สินค้า — wizard alchemy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== product-only styles ===== */
+
+    .page-head {
+      padding-block: clamp(3.5rem, 8vw, 6rem);
+      border-bottom: var(--line);
+    }
+
+    .page-head .muted {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: var(--step-1);
+      margin-top: 0.5rem;
+    }
+
+    #filter-bar {
+      padding-block: clamp(1.75rem, 4vw, 2.5rem);
+      border-bottom: var(--line);
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    #filter-bar .filters { margin-bottom: 0; }
+
+    #product-list {
+      /* grid defined in style.css (.grid) */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">wizard alchemy</a>
+      <nav class="nav" aria-label="เมนูหลัก">
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html" aria-current="page">สินค้า</a>
+        <a href="order.html">สั่งซื้อ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== page heading ===== -->
+  <div class="page-head">
+    <div class="container">
+      <h1 style="font-size: var(--step-3); margin-bottom: 0.3rem;">สินค้าทั้งหมด</h1>
+      <p class="muted">เลือกสูตรที่ใช่สำหรับโมเมนต์นี้</p>
+    </div>
+  </div>
+
+  <!-- ===== filter bar (rendered by script.js) ===== -->
+  <div id="filter-bar">
+    <div class="container">
+      <div class="filters" role="group" aria-label="กรองตาม mood">
+        <!-- script.js inject chips here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== product grid (rendered by script.js) ===== -->
+  <main class="section" style="padding-top: 0;">
+    <div class="container">
+      <div id="product-list" class="grid" aria-live="polite" aria-label="รายการสินค้า">
+        <!-- script.js inject cards here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="brand">wizard alchemy</span>
+      <span style="color: var(--ink-faint); font-size: var(--step--1);">
+        น้ำหอมปรับบรรยากาศ · ส่งคำสั่งซื้อผ่าน <a href="order.html">หน้าสั่งซื้อ</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

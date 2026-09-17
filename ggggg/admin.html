@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — wizard alchemy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: var(--line);
+      margin-top: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    #ordersTable {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--step--1);
+    }
+
+    #ordersTable th,
+    #ordersTable td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      border-bottom: var(--line);
+      white-space: nowrap;
+    }
+
+    #ordersTable tbody tr:last-child td { border-bottom: 0; }
+
+    #ordersTable thead {
+      background: var(--cream);
+    }
+
+    #ordersTable th {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--ink-soft);
+      border-bottom: var(--line-strong);
+    }
+
+    /* คอลัมน์หมายเหตุและรายการ wrap ได้ */
+    #ordersTable td:nth-child(4),
+    #ordersTable td:nth-child(6) {
+      white-space: normal;
+      min-width: 200px;
+      max-width: 300px;
+    }
+
+    #ordersTable tbody tr:hover td { background: var(--cream); }
+
+    .col-price {
+      font-family: var(--display);
+      font-size: var(--step-0);
+      text-align: right !important;
+    }
+
+    #ordersTable th:nth-child(5),
+    #ordersTable td:nth-child(5) { text-align: right; }
+
+    .admin-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .admin-note {
+      font-size: var(--step--1);
+      color: var(--ink-faint);
+    }
+
+    .refresh-btn {
+      font-size: var(--step--1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">wizard alchemy</a>
+      <nav class="nav" aria-label="เมนูหลัก">
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html">สินค้า</a>
+        <a href="admin.html" aria-current="page">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- page head -->
+      <div class="section-head">
+        <h1 style="font-size: var(--step-3); margin-bottom: 0.3rem;">รายการสั่งซื้อ</h1>
+        <p class="lede" style="margin: 0;">ดึงข้อมูลจาก Google Sheet โดยตรง</p>
+      </div>
+
+      <!-- meta bar -->
+      <div class="admin-meta">
+        <span class="admin-note" id="lastRefresh">กำลังโหลดข้อมูล…</span>
+        <button class="btn btn--ghost refresh-btn" onclick="location.reload()">รีเฟรช</button>
+      </div>
+
+      <!-- orders table -->
+      <div class="table-wrap" role="region" aria-label="ตารางคำสั่งซื้อ" tabindex="0">
+        <table id="ordersTable">
+          <thead>
+            <tr>
+              <th scope="col">วันเวลา</th>
+              <th scope="col">ชื่อลูกค้า</th>
+              <th scope="col">เบอร์โทร / Line</th>
+              <th scope="col">รายการสินค้า</th>
+              <th scope="col">จำนวนเงินรวม</th>
+              <th scope="col">หมายเหตุ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- script.js inject rows here -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="brand">wizard alchemy</span>
+      <span style="color: var(--ink-faint); font-size: var(--step--1);">Admin panel</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    /* แสดงเวลาที่โหลดล่าสุด */
+    (function () {
+      const el = document.getElementById('lastRefresh');
+      const now = new Date();
+      el.textContent = 'โหลดล่าสุด: ' + now.toLocaleTimeString('th-TH');
+    })();
+  </script>
+</body>
+</html>

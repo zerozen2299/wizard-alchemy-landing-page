@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ขอบคุณ — wizard alchemy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .thankyou-wrap {
+      min-height: calc(100svh - 74px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-block: clamp(4rem, 10vw, 7rem);
+    }
+
+    .thankyou-box {
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .thankyou-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 1.4rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .thankyou-box h1 {
+      font-size: var(--step-3);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .thankyou-box p {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: var(--step-1);
+      color: var(--ink-soft);
+      line-height: 1.75;
+      max-width: 36ch;
+      margin-inline: auto;
+      margin-bottom: 3rem;
+    }
+
+    .thankyou-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">wizard alchemy</a>
+      <nav class="nav" aria-label="เมนูหลัก">
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html">สินค้า</a>
+        <a href="order.html">สั่งซื้อ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="thankyou-wrap">
+    <div class="thankyou-box">
+      <div class="thankyou-mark" aria-hidden="true">✓</div>
+      <h1>ได้รับคำสั่งซื้อแล้ว</h1>
+      <p>ขอบคุณที่เลือก wizard alchemy<br>
+         ทีมงานจะติดต่อกลับทาง Line เพื่อยืนยันคำสั่งซื้อโดยเร็ว</p>
+      <div class="thankyou-actions">
+        <a class="btn btn--solid" href="index.html">กลับหน้าแรก</a>
+        <a class="btn" href="product.html">ดูสินค้าเพิ่มเติม</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
