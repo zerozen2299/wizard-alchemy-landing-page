@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wizard alchemy — น้ำหอมปรับบรรยากาศ</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== index-only styles ===== */
+
+    /* hero */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: clamp(3.5rem, 9vw, 6rem);
+      border-bottom: var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 72% 30%, rgba(169,131,76,.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(184,174,205,.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero__content { position: relative; max-width: 820px; }
+
+    .hero__eyebrow {
+      font-family: var(--body);
+      font-size: var(--step--1);
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      text-transform: lowercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.75rem, 7.5vw, 5.25rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero__lede {
+      font-family: var(--display);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-style: italic;
+      color: var(--ink-soft);
+      max-width: 52ch;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: clamp(1.5rem, 4vw, 2.5rem);
+      right: var(--gutter);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--ink-faint);
+      writing-mode: vertical-rl;
+    }
+
+    .hero__scroll::before {
+      content: "";
+      width: 1px;
+      height: 3.5rem;
+      background: linear-gradient(to bottom, transparent, var(--beige-deep));
+    }
+
+    /* mood section */
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .mood-card {
+      display: flex;
+      flex-direction: column;
+      padding: clamp(2rem, 4vw, 3.25rem) clamp(1.5rem, 3vw, 2.5rem);
+      border: var(--line);
+      border-left: none;
+      text-decoration: none;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+    }
+
+    .mood-card:first-child { border-left: var(--line); }
+    .mood-card:hover { background: var(--cream); color: var(--ink); }
+
+    .mood-card__pip {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-bottom: 2rem;
+      flex: none;
+    }
+
+    .mood-card--fresh   .mood-card__pip { background: var(--mood-fresh); }
+    .mood-card--relax   .mood-card__pip { background: var(--mood-relax); }
+    .mood-card--focus   .mood-card__pip { background: var(--mood-focus); }
+    .mood-card--romance .mood-card__pip { background: var(--mood-romance); }
+
+    .mood-card__name {
+      font-family: var(--display);
+      font-size: var(--step-2);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .mood-card__thai {
+      font-size: var(--step--1);
+      color: var(--ink-soft);
+      margin-bottom: auto;
+    }
+
+    .mood-card__scents {
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      line-height: 1.9;
+    }
+
+    .mood-card__arrow {
+      position: absolute;
+      bottom: clamp(1.5rem, 3vw, 2.25rem);
+      right: clamp(1.5rem, 2.5vw, 2rem);
+      font-size: 1.1rem;
+      color: var(--beige-deep);
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .mood-card:hover .mood-card__arrow {
+      color: var(--gold);
+      transform: translate(3px, -3px);
+    }
+
+    /* about strip */
+    .about-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: var(--line);
+      border-bottom: var(--line);
+    }
+
+    .about-strip__text {
+      padding: clamp(3rem, 7vw, 5.5rem) var(--gutter);
+      border-right: var(--line);
+    }
+
+    .about-strip__label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1.75rem;
+    }
+
+    .about-strip__text h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 300;
+      max-width: 28ch;
+    }
+
+    .about-strip__text p {
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+      max-width: 44ch;
+      margin-top: 1.25rem;
+    }
+
+    .about-strip__stats {
+      padding: clamp(3rem, 7vw, 5.5rem) var(--gutter);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .stat { border-left: 1px solid var(--beige-deep); padding-left: 1.5rem; }
+
+    .stat__num {
+      font-family: var(--display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat__label {
+      font-size: var(--step--1);
+      color: var(--ink-faint);
+      margin-top: 0.35rem;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .mood-card:nth-child(3) { border-top: none; }
+      .mood-card:nth-child(4) { border-top: none; }
+      .mood-card:nth-child(2) { border-left: none; }
+      .mood-card:nth-child(4) { border-left: none; }
+      .mood-card:first-child  { border-left: var(--line); }
+      .mood-card:nth-child(3) { border-left: var(--line); }
+    }
+
+    @media (max-width: 640px) {
+      .mood-grid { grid-template-columns: 1fr; }
+      .mood-card { border-left: var(--line) !important; border-top: none; }
+      .mood-card:first-child { border-top: var(--line); }
+
+      .about-strip { grid-template-columns: 1fr; }
+      .about-strip__text { border-right: none; border-bottom: var(--line); }
+      .about-strip__stats { flex-direction: row; flex-wrap: wrap; gap: 1.5rem 2rem; }
+
+      .hero__scroll { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">wizard alchemy</a>
+      <nav class="nav" aria-label="เมนูหลัก">
+        <a href="index.html" aria-current="page">หน้าแรก</a>
+        <a href="product.html">สินค้า</a>
+        <a href="order.html">สั่งซื้อ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== hero ===== -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero__content">
+        <p class="hero__eyebrow">wizard alchemy</p>
+        <h1>กลิ่นที่<em>เปลี่ยน</em><br>ห้องเป็นยา</h1>
+        <p class="hero__lede">
+          น้ำหอมปรับบรรยากาศที่ผสมขึ้นเพื่อดูแลคุณ<br>
+          ทั้งร่างกาย จิตใจ และโมเมนต์ที่ต้องการมากที่สุด
+        </p>
+        <a class="btn" href="product.html">ดูสินค้าทั้งหมด</a>
+      </div>
+    </div>
+    <span class="hero__scroll" aria-hidden="true">scroll</span>
+  </section>
+
+  <!-- ===== mood cards ===== -->
+  <section class="section" style="padding-block: 0;">
+    <div class="mood-grid">
+
+      <a class="mood-card mood-card--fresh" href="product.html?mood=fresh">
+        <span class="mood-card__pip" aria-hidden="true"></span>
+        <span class="mood-card__name">Fresh</span>
+        <span class="mood-card__thai">เสริมพละกำลัง</span>
+        <span class="mood-card__scents">ยูซุ · มิ้นท์</span>
+        <span class="mood-card__arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="mood-card mood-card--relax" href="product.html?mood=relax">
+        <span class="mood-card__pip" aria-hidden="true"></span>
+        <span class="mood-card__name">Relax</span>
+        <span class="mood-card__thai">ยานอนหลับ</span>
+        <span class="mood-card__scents">ลาเวนเดอร์ · คาโมมายล์</span>
+        <span class="mood-card__arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="mood-card mood-card--focus" href="product.html?mood=focus">
+        <span class="mood-card__pip" aria-hidden="true"></span>
+        <span class="mood-card__name">Focus</span>
+        <span class="mood-card__thai">เสริมสมาธิ</span>
+        <span class="mood-card__scents">ชาขาว · ไม้สน</span>
+        <span class="mood-card__arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="mood-card mood-card--romance" href="product.html?mood=romance">
+        <span class="mood-card__pip" aria-hidden="true"></span>
+        <span class="mood-card__name">Romance</span>
+        <span class="mood-card__thai">ยารักษา</span>
+        <span class="mood-card__scents">วานิลลา · มี้ดฮันนี</span>
+        <span class="mood-card__arrow" aria-hidden="true">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===== about strip ===== -->
+  <section class="section" style="padding-block: 0;">
+    <div class="about-strip">
+      <div class="about-strip__text">
+        <span class="about-strip__label">เกี่ยวกับ wizard alchemy</span>
+        <h2>สูตรที่คิดขึ้นสำหรับทุกโมเมนต์</h2>
+        <p>
+          แต่ละขวดถูกออกแบบให้ตรงกับสภาวะที่คุณต้องการ
+          ไม่ว่าจะเป็นยามเช้าที่ยังไม่ตื่นเต็มที่
+          ช่วงดึกก่อนสอบ หรือคืนที่อยากวางทุกอย่างลง
+        </p>
+      </div>
+      <div class="about-strip__stats">
+        <div class="stat">
+          <div class="stat__num">4</div>
+          <div class="stat__label">สูตรหลัก</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">10</div>
+          <div class="stat__label">กลิ่นและขนาด</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">89฿</div>
+          <div class="stat__label">ราคาเริ่มต้น</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="brand">wizard alchemy</span>
+      <span style="color: var(--ink-faint); font-size: var(--step--1);">
+        น้ำหอมปรับบรรยากาศ · ส่งคำสั่งซื้อผ่าน <a href="order.html">หน้าสั่งซื้อ</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
